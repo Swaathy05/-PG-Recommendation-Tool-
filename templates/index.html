@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PG Recommendations</title>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+        <!-- Link to your CSS file -->
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    
+</head>
+<body>
+    <header>
+        <h1>Find Your Perfect PG in Tamil Nadu</h1>
+        <p class="subtitle">Discover PGs based on your preferences, or explore some related options.</p>
+    </header>
+    <section class="form-container">
+        <form action="/" method="POST">
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" id="city" name="city" placeholder="Enter City">
+            </div>
+            <div class="form-group">
+                <label for="nearby_college">Nearby College</label>
+                <input type="text" id="nearby_college" name="nearby_college" placeholder="Enter Nearby College">
+            </div>
+            <div class="form-group">
+                <label for="max_rent">Max Rent (INR)</label>
+                <input type="number" id="max_rent" name="max_rent" placeholder="Max Rent">
+            </div>
+            <div class="form-group">
+                <label for="room_type">Room Type</label>
+                <input type="text" id="room_type" name="room_type" placeholder="Room Type (Single/Shared)">
+            </div>
+            <div class="form-group">
+                <label for="amenities">Amenities</label>
+                <input type="text" id="amenities" name="amenities" placeholder="Enter Amenities (e.g., Wi-Fi, AC)">
+            </div>
+            <div class="form-group">
+                <label for="max_distance">Max Distance (km)</label>
+                <input type="number" id="max_distance" name="max_distance" placeholder="Max Distance">
+            </div>
+            <div class="form-group">
+                <label for="min_rating">Min Rating</label>
+                <input type="number" id="min_rating" name="min_rating" placeholder="Min Rating (1-5)">
+            </div>
+            <button type="submit" class="submit-btn">Find PGs</button>
+        </form>
+    </section>
+    <section class="results">
+        {% if recommended_pgs %}
+        <h2>Recommended PGs</h2>
+        <div class="result-cards">
+            {% for pg in recommended_pgs %}
+            <div class="card">
+                <h3>{{ pg['PG Name'] }}</h3>
+                <p>City: {{ pg['City'] }}</p>
+                <p>College: {{ pg['Nearby College'] }}</p>
+                <p>Rent: ₹{{ pg['Rent (INR/Month)'] }}</p>
+                <p>Rating: {{ pg['Rating'] }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        {% elif error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+    </section>
+    <footer>
+        <p>© 2024 PG Recommendation Tool | Designed for Students</p>
+    </footer>
+</body>
+</html>
