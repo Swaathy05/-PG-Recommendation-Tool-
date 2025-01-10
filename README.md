@@ -25,6 +25,12 @@ The **PG Recommendation Tool** is a web application designed to help college stu
 2. **PG Search**: The tool searches the **synthetic dataset** for PGs matching the given criteria.
 3. **Recommendations**: Displays a list of PGs with detailed information like rent, amenities, and contact details.
 
+## Screenshots 
+
+![image](https://github.com/user-attachments/assets/0a56c8c0-2cd7-46fd-9dcf-0926669362d0)
+![image](https://github.com/user-attachments/assets/5ff45089-3b75-4709-8073-1fff1678be37)
+
+
 ## Acknowledgments
 
 - The dataset used for PG recommendations is a **synthetic dataset** generated using GPT for demonstration purposes.
